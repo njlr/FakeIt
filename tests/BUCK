@@ -1,0 +1,22 @@
+def tpunit_test(name, sources):
+  return cxx_binary(
+    name = name,
+    header_namespace = '',
+    headers = [
+      'tpunit++.hpp',
+    ],
+    srcs = sources + [
+      'tpunit++main.cpp',
+    ],
+    compiler_flags = [
+      '-std=c++14',
+    ],
+    deps = [
+      '//:fakeit',
+    ],
+  )
+
+tpunit_test('cpp14_tests', ['cpp14_tests.cpp'])
+tpunit_test('functional', ['functional.cpp'])
+tpunit_test('miscellaneous_tests', ['miscellaneous_tests.cpp'])
+tpunit_test('verification_tests', ['verification_tests.cpp'])
